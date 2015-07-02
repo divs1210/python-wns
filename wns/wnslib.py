@@ -188,6 +188,17 @@ class WNSBase(object):
         return response
 
 
+class WNSRaw(WNSBase):
+
+    def __init__(self, *args, **kwargs):
+        super(WNSRaw, self).__init__(*args, **kwargs)
+        self.headers['Content-Type'] = 'application/octet-stream'
+        self.set_type('raw')
+
+    def prepare_payload(self, payload):
+        return payload
+
+
 class WNSToast(WNSBase):
 
     def __init__(self, *args, **kwargs):
